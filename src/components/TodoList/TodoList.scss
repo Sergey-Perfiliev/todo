@@ -1,0 +1,34 @@
+@import "../../styles/variables.scss";
+
+.todo-list {
+  overflow-y: auto;
+}
+
+.todo-app__add-button {
+  padding: $base * 2;
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(196, 60, 60);
+    span {
+      background-color: rgb(196, 60, 60);
+      color: white;
+    }
+  }
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    padding: $base;
+    margin-right: $base * 2;
+
+    border-radius: 50%;
+  }
+}
