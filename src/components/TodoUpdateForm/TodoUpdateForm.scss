@@ -4,22 +4,23 @@
   width: 100%;
   height: 100%;
 
-  .todo-update-name, .todo-update-description {
+  .todo-update-name,
+  .todo-update-description {
     width: 100%;
     border: none;
     outline: none;
-		padding: 16px;
+    padding: 16px;
     border-radius: 8px;
   }
 
-	.todo-update-name {
-		font-size: 16px;
-	}
+  .todo-update-name {
+    font-size: 16px;
+  }
 
-	.todo-update-description{
-		font-size: 14px;
-		resize: none;
-	}
+  .todo-update-description {
+    font-size: 14px;
+    resize: none;
+  }
 
   &__select {
     padding: 8px 16px;
@@ -32,4 +33,10 @@
   &__input-wrapper:not(:first-child) {
     margin-top: $base * 2;
   }
+	
+}
+
+.todo-choose {
+	cursor: default;
+	font-weight: 400;
 }

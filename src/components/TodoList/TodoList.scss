@@ -16,9 +16,9 @@
   cursor: pointer;
 
   &:hover {
-    color: rgb(196, 60, 60);
+    color: $todo-add;
     span {
-      background-color: rgb(196, 60, 60);
+      background-color: $todo-add;
       color: white;
     }
   }

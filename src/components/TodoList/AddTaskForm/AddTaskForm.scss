@@ -1,0 +1,45 @@
+@import "../../../styles/variables.scss";
+
+.add-todo-form {
+  padding: $base * 2;
+  border-radius: $base * 2;
+  border: 2px solid $todo-app-background;
+  background-color: $todo-item-background;
+
+  input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+  }
+
+  textarea {
+    margin-top: $base * 2;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    resize: none;
+    font-size: 14px;
+  }
+
+  &__buttons {
+    .button-cancel,
+    .button-submit {
+      transition: all ease 0.15s;
+    }
+
+    .button-submit:disabled,
+    .button-submit[disabled] {
+      cursor: not-allowed;
+      filter: brightness(90%);
+    }
+
+    .button-cancel {
+      margin-right: $base * 2;
+
+      &:hover {
+        filter: brightness(85%);
+      }
+    }
+  }
+}

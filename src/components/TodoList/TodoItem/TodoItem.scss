@@ -1,0 +1,55 @@
+@import "../../../styles/variables.scss";
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: $base * 2 $base * 4;
+  margin-bottom: $base * 2;
+  cursor: pointer;
+  border-radius: $base;
+  background-color: $todo-item-background;
+
+  &.done {
+    background-color: $done;
+  }
+  &.in-progress {
+    background-color: $in-progress;
+  }
+  &.pending {
+    background-color: $pending;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: $base * 5;
+  }
+
+  &__description {
+    color: $todo-description;
+    font-weight: 400;
+    font-size: $base * 4;
+  }
+
+  &__delete-button {
+    opacity: 0;
+    transition: all ease 0.15s;
+    padding: $base;
+    border-radius: 100%;
+
+    svg {
+      vertical-align: bottom;
+    }
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  &:hover {
+    .todo-item__delete-button {
+      opacity: 1;
+    }
+  }
+}

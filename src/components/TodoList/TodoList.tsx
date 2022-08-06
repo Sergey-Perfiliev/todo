@@ -1,17 +1,52 @@
+import { useState } from 'react';
 import GlobalSvgSelector from '../../assets/GlobalSvgSelector'
-import TodoItem from './TodoItem'
+import { useTodoContext } from '../../hooks/useTodoContext';
+import { Todo } from '../../types/Todo'
+import { AddTaskForm } from './AddTaskForm/AddTaskForm'
+import TodoItem from './TodoItem/TodoItem'
 import './TodoList.scss'
 
-type Props = {}
+type Props = {
+	setCurrentTodo: React.Dispatch<React.SetStateAction<Todo | null>>
+}
 
-const TodoList = (props: Props) => {
+const TodoList = ({ setCurrentTodo }: Props) => {
+	const [addTaskMode, setAddTaskMode] = useState<boolean>(false)
+	const { todoList, addTodoItem, deleteTodoItem } = useTodoContext()
+
+	const handleTaskMode = () => setAddTaskMode(!addTaskMode)
+
+	const handleSubmit = (todo: Todo) => {
+		handleTaskMode()
+		addTodoItem(todo)
+	}
+
+	const handleDeleteTodo = (e: React.MouseEvent<HTMLElement>, id: number) => {
+		e.stopPropagation()
+		deleteTodoItem(id)
+	}
+
+	const todoItems = todoList.map(todo =>
+		<TodoItem
+			key={todo.id}
+			todo={todo}
+			setCurrentTodo={setCurrentTodo}
+			deleteTodo={handleDeleteTodo}
+		/>)
+
 	return (
 		<div className='todo-app-item todo-list'>
-			<TodoItem />
-			<button className='todo-app__add-button'>
-				<span><GlobalSvgSelector id='add-button' /></span>
-				Add task
-			</button>
+			{todoItems}
+
+			{!addTaskMode ?
+				<button className='todo-app__add-button' onClick={handleTaskMode}>
+					<span><GlobalSvgSelector id='add-button' /></span>
+					Add task
+				</button> :
+				<AddTaskForm
+					handleTaskMode={handleTaskMode}
+					handleSubmit={handleSubmit}
+				/>}
 		</div>
 	)
 }
