@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GlobalSvgSelector from '../../assets/GlobalSvgSelector'
+import { useInput } from '../../hooks/useInput';
 import { useTodoContext } from '../../hooks/useTodoContext';
 import { Todo } from '../../types/Todo'
 import { AddTaskForm } from './AddTaskForm/AddTaskForm'
+import { SearchBar } from './SearchBar/SearchBar';
 import TodoItem from './TodoItem/TodoItem'
+import { resize } from './todolist.resize';
 import './TodoList.scss'
 
 type Props = {
@@ -13,6 +16,10 @@ type Props = {
 const TodoList = ({ setCurrentTodo }: Props) => {
 	const [addTaskMode, setAddTaskMode] = useState<boolean>(false)
 	const { todoList, addTodoItem, deleteTodoItem } = useTodoContext()
+
+	useEffect(() => {
+		resize()
+	})
 
 	const handleTaskMode = () => setAddTaskMode(!addTaskMode)
 
@@ -26,16 +33,22 @@ const TodoList = ({ setCurrentTodo }: Props) => {
 		deleteTodoItem(id)
 	}
 
-	const todoItems = todoList.map(todo =>
-		<TodoItem
-			key={todo.id}
-			todo={todo}
-			setCurrentTodo={setCurrentTodo}
-			deleteTodo={handleDeleteTodo}
-		/>)
+	const [searchText, handleSearchText] = useInput('')
+
+	const todoItems = todoList
+		.filter(todo =>
+			todo.title.toLowerCase().includes(searchText.toLowerCase()))
+		.map(todo =>
+			<TodoItem
+				key={todo.id}
+				todo={todo}
+				setCurrentTodo={setCurrentTodo}
+				deleteTodo={handleDeleteTodo}
+			/>)
 
 	return (
 		<div className='todo-app-item todo-list'>
+			<SearchBar text={searchText} handleSearchText={handleSearchText} />
 			{todoItems}
 
 			{!addTaskMode ?
@@ -47,6 +60,8 @@ const TodoList = ({ setCurrentTodo }: Props) => {
 					handleTaskMode={handleTaskMode}
 					handleSubmit={handleSubmit}
 				/>}
+
+			<div className='column-resize'></div>
 		</div>
 	)
 }

@@ -1,7 +1,9 @@
 @import "../../styles/variables.scss";
 
 .todo-list {
+  position: relative;
   overflow-y: auto;
+  flex: 0 1 auto;
 }
 
 .todo-app__add-button {
@@ -16,7 +18,6 @@
   cursor: pointer;
 
   &:hover {
-    // color: $todo-add;
     span {
       background-color: $todo-add;
       color: white;
@@ -30,5 +31,28 @@
     margin-right: $base * 2;
 
     border-radius: 50%;
+  }
+}
+
+.todo-list__search {
+  .search-input {
+    width: 100%;
+    margin-bottom: $base * 4;
+  }
+}
+
+.column-resize {
+  position: absolute;
+  width: $base * 2;
+  cursor: col-resize;
+  background-color: white;
+  opacity: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transition: all ease 0.15s;
+
+  &:hover {
+    background-color: darken($todo-app-background, 15%);
   }
 }

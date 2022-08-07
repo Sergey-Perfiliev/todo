@@ -21,9 +21,18 @@
     background-color: $pending;
   }
 
+  &-container {
+    width: 90%;
+  }
+
   &__title {
     font-weight: 400;
     font-size: $base * 5;
+
+    width: 90%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__description {

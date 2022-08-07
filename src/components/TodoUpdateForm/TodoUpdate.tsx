@@ -8,11 +8,11 @@ type Props = {
 
 const TodoUpdate = ({ currentTodo }: Props) => {
 	return (
-		<div className='todo-app-item'>
+		<div className='todo-app-item todo-update' style={{ flex: '1' }}>
 			{
 				!!currentTodo ?
 					<TodoUpdateForm currentTodo={currentTodo} /> :
-					<h2 className='todo-choose'>Choose Todo to Update</h2>
+					<h2 className='todo-choose noselect'>Choose Todo to Update</h2>
 			}
 		</div>
 	)

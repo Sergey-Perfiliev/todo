@@ -14,7 +14,7 @@ const TodoItem = ({ todo, setCurrentTodo, deleteTodo }: Props) => {
 
 	return (
 		<div className={todoItemClassName} onClick={() => setCurrentTodo(todo)}>
-			<div>
+			<div className='todo-item-container'>
 				<h3 className='todo-item__title'>{title}</h3>
 				<h4 className='todo-item__description'>{description}</h4>
 			</div>
