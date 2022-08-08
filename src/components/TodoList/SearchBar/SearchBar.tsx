@@ -1,16 +1,21 @@
 import React from 'react'
+import GlobalSvgSelector from '../../../assets/GlobalSvgSelector';
 
 type Props = {
 	text: string,
-	handleSearchText: () => void
+	handleSearchText: () => void,
+	handleClear: () => void
 }
 
-export const SearchBar = ({ text, handleSearchText }: Props) => {
-		return (
+export const SearchBar = ({ text, handleSearchText, handleClear }: Props) => {
+	return (
 		<div className='todo-list__search'>
-			<input className='todo-input search-input' placeholder='Search' autoFocus
+			<input type='search' className='todo-input search-input' placeholder='Search' autoFocus
 				value={text} onChange={handleSearchText}
 			/>
+			<div onClick={handleClear}>
+				<GlobalSvgSelector id='clear-button' />
+			</div>
 		</div>
 	)
 }

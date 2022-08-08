@@ -28,12 +28,6 @@
       transition: all ease 0.15s;
     }
 
-    .button-submit:disabled,
-    .button-submit[disabled] {
-      cursor: not-allowed;
-      filter: brightness(90%);
-    }
-
     .button-cancel {
       margin-right: $base * 2;
 

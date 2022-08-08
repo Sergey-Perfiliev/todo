@@ -33,7 +33,9 @@ const TodoList = ({ setCurrentTodo }: Props) => {
 		deleteTodoItem(id)
 	}
 
-	const [searchText, handleSearchText] = useInput('')
+	const [searchText, handleSearchText, setSearchText] = useInput('')
+
+	const handleClear = () => setSearchText('')
 
 	const todoItems = todoList
 		.filter(todo =>
@@ -48,7 +50,11 @@ const TodoList = ({ setCurrentTodo }: Props) => {
 
 	return (
 		<div className='todo-app-item todo-list'>
-			<SearchBar text={searchText} handleSearchText={handleSearchText} />
+			<SearchBar
+				text={searchText}
+				handleSearchText={handleSearchText}
+				handleClear={handleClear}
+			/>
 			{todoItems}
 
 			{!addTaskMode ?

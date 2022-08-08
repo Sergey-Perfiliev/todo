@@ -55,7 +55,8 @@ const TodoUpdateForm = ({ currentTodo }: Props) => {
 				/>
 			</div>
 			<div className='buttons'>
-				<button type='button' className='todo-button button-submit' onClick={handleUpdate}>
+				<button disabled={!title} type='button' className='todo-button button-submit'
+					onClick={handleUpdate}>
 					Update
 				</button>
 			</div>

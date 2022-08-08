@@ -38,6 +38,12 @@
   background-color: $todo-add;
   color: white;
 
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    filter: brightness(90%);
+  }
+
   &:hover {
     filter: brightness(105%);
   }

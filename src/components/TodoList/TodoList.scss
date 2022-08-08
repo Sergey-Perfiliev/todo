@@ -35,9 +35,28 @@
 }
 
 .todo-list__search {
+  position: relative;
+  margin-bottom: $base * 4;
+
   .search-input {
     width: 100%;
-    margin-bottom: $base * 4;
+
+    &:placeholder-shown + div {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  svg {
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    bottom: 0;
+    right: $base * 4;
+    margin: auto;
+    background: #ddd;
+    cursor: pointer;
+    transition: 0.1s;
   }
 }
 
