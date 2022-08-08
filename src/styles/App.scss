@@ -3,13 +3,13 @@
 .todo-app {
   height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
 
   &__container {
     padding: $base * 4;
     display: flex;
     justify-content: space-around;
+    margin: 0 auto;
     align-items: center;
     gap: $base * 2;
     background-color: $todo-app-background;
