@@ -10,10 +10,11 @@ import { resize } from './todolist.resize';
 import './TodoList.scss'
 
 type Props = {
+	currentTodo: Todo | null
 	setCurrentTodo: React.Dispatch<React.SetStateAction<Todo | null>>
 }
 
-const TodoList = ({ setCurrentTodo }: Props) => {
+const TodoList = ({ currentTodo, setCurrentTodo }: Props) => {
 	const [addTaskMode, setAddTaskMode] = useState<boolean>(false)
 	const { todoList, addTodoItem, deleteTodoItem } = useTodoContext()
 
@@ -30,6 +31,9 @@ const TodoList = ({ setCurrentTodo }: Props) => {
 
 	const handleDeleteTodo = (e: React.MouseEvent<HTMLElement>, id: number) => {
 		e.stopPropagation()
+		if (id === currentTodo?.id) {
+			setCurrentTodo(null)
+		}
 		deleteTodoItem(id)
 	}
 

@@ -11,6 +11,7 @@ function App() {
 		<div className='todo-app'>
 			<div className="todo-app__container">
 				<TodoList
+					currentTodo={currentTodo}
 					setCurrentTodo={setCurrentTodo}
 				/>
 				<TodoUpdate
